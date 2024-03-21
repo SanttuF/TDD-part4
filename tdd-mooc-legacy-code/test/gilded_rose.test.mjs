@@ -4,7 +4,7 @@ import { Item, Shop } from "../src/gilded_rose.mjs";
 
 describe("Gilded Rose", () => {
   test('empty', () => {
-    const gildedRose = new Shop([])
+    const gildedRose = new Shop()
     const items = gildedRose.updateQuality()
     expect(items).to.deep.equal([])
   })
@@ -34,4 +34,20 @@ describe("Gilded Rose", () => {
     expect(items[1].quality).to.equal(12);
     expect(items[2].quality).to.equal(100);
   });
+
+  test('Aged Brie', () => {
+    const gildedRose = new Shop([new Item('Aged Brie', 0, 0)])
+    const items = gildedRose.updateQuality()
+    expect(items[0].name).to.equal('Aged Brie')
+    expect(items[0].sellIn).to.equal(-1)
+    expect(items[0].quality).to.equal(2)
+  })
+
+  test('"Sulfuras, Hand of Ragnaros"', () => {
+    const gildedRose = new Shop([new Item('"Sulfuras, Hand of Ragnaros"', 0, 0)])
+    const items = gildedRose.updateQuality()
+    expect(items[0].name).to.equal('"Sulfuras, Hand of Ragnaros"')
+    expect(items[0].sellIn).to.equal(-1)
+    expect(items[0].quality).to.equal(0)
+  })
 });
