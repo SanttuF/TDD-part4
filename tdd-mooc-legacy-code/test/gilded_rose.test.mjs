@@ -35,7 +35,13 @@ describe("Gilded Rose", () => {
       new Item("Backstage passes to a TAFKAL80ETC concert", 50, 6),
       new Item("Backstage passes to a TAFKAL80ETC concert", 49, 5),
       new Item("Backstage passes to a TAFKAL80ETC concert", 10, 48),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 5, 48)]);
+      new Item("Backstage passes to a TAFKAL80ETC concert", 5, 48),
+      new Item("Backstage passes to a TAFKAL80ETC concert", 6, 47),
+      new Item("Backstage passes to a TAFKAL80ETC concert", 10, 47),
+      new Item("Backstage passes to a TAFKAL80ETC concert", 5, 47),
+      new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
+      new Item("Backstage passes to a TAFKAL80ETC concert", 11, 48),
+      new Item("Backstage passes to a TAFKAL80ETC concert", 10, 48),]);
     const items = gildedRose.updateQuality();
     expect(items[0].quality).to.equal(50);
     expect(items[1].quality).to.equal(51);
@@ -46,6 +52,12 @@ describe("Gilded Rose", () => {
     expect(items[6].quality).to.equal(6);
     expect(items[7].quality).to.equal(50);
     expect(items[8].quality).to.equal(50);
+    expect(items[9].quality).to.equal(49);
+    expect(items[10].quality).to.equal(49);
+    expect(items[11].quality).to.equal(50);
+    expect(items[12].quality).to.equal(50);
+    expect(items[13].quality).to.equal(49);
+    expect(items[14].quality).to.equal(50);
 
     expect(items[0].sellIn).to.equal(10);
     expect(items[1].sellIn).to.equal(9);
