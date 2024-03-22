@@ -21,40 +21,6 @@ export class Shop {
     return this.items;
   }
 
-  #ageItem(i) {
-    if (this.items[i].name == "Sulfuras, Hand of Ragnaros") return
-    this.items[i].sellIn = this.items[i].sellIn - 1;
-  }
-
-  #decreaseQuality(i) {
-    if (this.items[i].name == "Sulfuras, Hand of Ragnaros") return
-    if (this.items[i].quality <= 0) return
-    if (this.items[i].name == "Conjured") {
-      this.items[i].quality = this.items[i].quality - 2;
-      return
-    }
-    this.items[i].quality = this.items[i].quality - 1;
-  }
-
-  #increaseQuality(i) {
-    if (this.items[i].name == "Sulfuras, Hand of Ragnaros") return
-    if (this.items[i].quality >= 50) return
-    this.items[i].quality = this.items[i].quality + 1;
-  }
-
-  #handleBackstagePass(i) {
-    
-    this.#increaseQuality(i);
-
-    if (this.items[i].sellIn < 11) {
-      this.#increaseQuality(i);
-    }
-
-    if (this.items[i].sellIn < 6) {
-      this.#increaseQuality(i);
-    }
-  }
-
   #handleQualityChange(i) {
     if (this.items[i].name == "Aged Brie") {
       this.#increaseQuality(i);
@@ -67,6 +33,11 @@ export class Shop {
     }
     
     this.#decreaseQuality(i)
+  }
+
+  #ageItem(i) {
+    if (this.items[i].name == "Sulfuras, Hand of Ragnaros") return
+    this.items[i].sellIn = this.items[i].sellIn - 1;
   }
 
   #handleExpired(i) {
@@ -85,5 +56,34 @@ export class Shop {
     }
 
     this.#decreaseQuality(i);
+  }
+
+  #handleBackstagePass(i) {
+    
+    this.#increaseQuality(i);
+
+    if (this.items[i].sellIn < 11) {
+      this.#increaseQuality(i);
+    }
+
+    if (this.items[i].sellIn < 6) {
+      this.#increaseQuality(i);
+    }
+  }
+
+  #decreaseQuality(i) {
+    if (this.items[i].name == "Sulfuras, Hand of Ragnaros") return
+    if (this.items[i].quality <= 0) return
+    if (this.items[i].name == "Conjured") {
+      this.items[i].quality = this.items[i].quality - 2;
+      return
+    }
+    this.items[i].quality = this.items[i].quality - 1;
+  }
+
+  #increaseQuality(i) {
+    if (this.items[i].name == "Sulfuras, Hand of Ragnaros") return
+    if (this.items[i].quality >= 50) return
+    this.items[i].quality = this.items[i].quality + 1;
   }
 }
