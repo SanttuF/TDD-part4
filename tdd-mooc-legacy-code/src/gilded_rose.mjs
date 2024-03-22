@@ -38,7 +38,7 @@ export class Shop {
     this.items[i].quality = this.items[i].quality + 1;
   }
 
-  #handeBackstagePass(i) {
+  #checkBackstagePass(i) {
     if (this.items[i].sellIn < 11) {
       this.#increaseQuality(i);
     }
@@ -48,14 +48,17 @@ export class Shop {
   }
 
   #handleQualityChange(i) {
-    if (this.items[i].name == "Aged Brie" || this.items[i].name == "Backstage passes to a TAFKAL80ETC concert") {
+    const current = this.items[i]
+
+    if (current.name == "Aged Brie" || current.name == "Backstage passes to a TAFKAL80ETC concert") {
       this.#increaseQuality(i);
-      if (this.items[i].name == "Backstage passes to a TAFKAL80ETC concert") {
-        this.#handeBackstagePass(i)
+      if (current.name == "Backstage passes to a TAFKAL80ETC concert") {
+        this.#checkBackstagePass(i)
       }
-    } else {
-      this.#decreaseQuality(i)
+      return
     }
+    
+    this.#decreaseQuality(i)
   }
 
   #handleExpired(i) {
