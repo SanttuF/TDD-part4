@@ -1,4 +1,4 @@
-import { describe, test } from "vitest";
+import { describe, expectTypeOf, test } from "vitest";
 import { expect } from "chai";
 import { Item, Shop } from "../src/gilded_rose.mjs";
 
@@ -145,10 +145,14 @@ describe("Gilded Rose", () => {
 
   test('Conjured', () => {
     const gildedRose = new Shop([
-      new Item("Conjured", 10, 10)
+      new Item("Conjured", 10, 10),
+      new Item("Conjured", -1, 10)
     ])
     const items = gildedRose.updateQuality()
     expect(items[0].sellIn).to.equal(9)
     expect(items[0].quality).to.equal(8)
+    
+    expect(items[1].sellIn).to.equal(-2)
+    expect(items[1].quality).to.equal(6)
   })
 });
