@@ -39,30 +39,25 @@ export class Shop {
   }
 
   #ageItem(i) {
-    if (this.items[i].name != "Sulfuras, Hand of Ragnaros") {
-      this.items[i].sellIn = this.items[i].sellIn - 1;
-    }
+    if (this.items[i].name == "Sulfuras, Hand of Ragnaros") return
+    this.items[i].sellIn = this.items[i].sellIn - 1;
   }
 
   #decreaseQuality(i) {
-    if (this.items[i].quality > 0) {
+    if (this.items[i].name == "Sulfuras, Hand of Ragnaros") return
+    if (this.items[i].quality <= 0) return
       this.items[i].quality = this.items[i].quality - 1;
-    }
   }
 
   #increaseQuality(i) {
-    if (this.items[i].quality < 50) {
-      this.items[i].quality = this.items[i].quality + 1;
-    }
+    if (this.items[i].name == "Sulfuras, Hand of Ragnaros") return
+    if (this.items[i].quality >= 50) return
+    this.items[i].quality = this.items[i].quality + 1;
   }
 
   #handleExpired(i) {
 
     if (this.items[i].sellIn >= 0) {
-      return
-    }
-
-    if (this.items[i].name == "Sulfuras, Hand of Ragnaros") {
       return
     }
 
