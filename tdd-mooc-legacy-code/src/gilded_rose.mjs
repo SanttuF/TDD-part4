@@ -39,9 +39,13 @@ export class Shop {
   }
 
   #checkBackstagePass(i) {
+    
+    this.#increaseQuality(i);
+
     if (this.items[i].sellIn < 11) {
       this.#increaseQuality(i);
     }
+
     if (this.items[i].sellIn < 6) {
       this.#increaseQuality(i);
     }
@@ -50,11 +54,13 @@ export class Shop {
   #handleQualityChange(i) {
     const current = this.items[i]
 
-    if (current.name == "Aged Brie" || current.name == "Backstage passes to a TAFKAL80ETC concert") {
+    if (current.name == "Aged Brie") {
       this.#increaseQuality(i);
-      if (current.name == "Backstage passes to a TAFKAL80ETC concert") {
-        this.#checkBackstagePass(i)
-      }
+      return
+    }
+
+    if (current.name == "Backstage passes to a TAFKAL80ETC concert") {
+      this.#checkBackstagePass(i)
       return
     }
     
