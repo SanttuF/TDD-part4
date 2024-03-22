@@ -52,7 +52,6 @@ export class Shop {
   }
 
   #handleExpired(i) {
-
     if (this.items[i].sellIn >= 0) {
       return
     }
@@ -68,6 +67,5 @@ export class Shop {
     }
 
     this.#decreaseQuality(i);
-
   }
 }
