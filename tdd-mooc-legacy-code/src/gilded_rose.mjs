@@ -38,7 +38,7 @@ export class Shop {
     this.items[i].quality = this.items[i].quality + 1;
   }
 
-  #checkBackstagePass(i) {
+  #handleBackstagePass(i) {
     
     this.#increaseQuality(i);
 
@@ -60,7 +60,7 @@ export class Shop {
     }
 
     if (current.name == "Backstage passes to a TAFKAL80ETC concert") {
-      this.#checkBackstagePass(i)
+      this.#handleBackstagePass(i)
       return
     }
     
