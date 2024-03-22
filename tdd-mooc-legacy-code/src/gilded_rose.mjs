@@ -52,14 +52,12 @@ export class Shop {
   }
 
   #handleQualityChange(i) {
-    const current = this.items[i]
-
-    if (current.name == "Aged Brie") {
+    if (this.items[i].name == "Aged Brie") {
       this.#increaseQuality(i);
       return
     }
 
-    if (current.name == "Backstage passes to a TAFKAL80ETC concert") {
+    if (this.items[i].name == "Backstage passes to a TAFKAL80ETC concert") {
       this.#handleBackstagePass(i)
       return
     }
