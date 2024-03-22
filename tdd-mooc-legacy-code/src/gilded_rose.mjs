@@ -29,7 +29,11 @@ export class Shop {
   #decreaseQuality(i) {
     if (this.items[i].name == "Sulfuras, Hand of Ragnaros") return
     if (this.items[i].quality <= 0) return
-      this.items[i].quality = this.items[i].quality - 1;
+    if (this.items[i].name == "Conjured") {
+      this.items[i].quality = this.items[i].quality - 2;
+      return
+    }
+    this.items[i].quality = this.items[i].quality - 1;
   }
 
   #increaseQuality(i) {

@@ -149,5 +149,6 @@ describe("Gilded Rose", () => {
     ])
     const items = gildedRose.updateQuality()
     expect(items[0].sellIn).to.equal(9)
+    expect(items[0].quality).to.equal(8)
   })
 });
