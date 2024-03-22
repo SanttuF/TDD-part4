@@ -13,20 +13,7 @@ export class Shop {
 
   updateQuality() {
     for (var i = 0; i < this.items.length; i++) {
-      if (this.items[i].name != "Aged Brie" && this.items[i].name != "Backstage passes to a TAFKAL80ETC concert") {
-        this.#decreaseQuality(i)
-      } else {
-        this.#increaseQuality(i);
-        if (this.items[i].name == "Backstage passes to a TAFKAL80ETC concert") {
-          if (this.items[i].sellIn < 11) {
-            this.#increaseQuality(i);
-          }
-          if (this.items[i].sellIn < 6) {
-            this.#increaseQuality(i);
-          }
-        }
-      }
-
+      this.#handleQualityChange(i)
       this.#ageItem(i);
       this.#handleExpired(i)
     }
@@ -49,6 +36,26 @@ export class Shop {
     if (this.items[i].name == "Sulfuras, Hand of Ragnaros") return
     if (this.items[i].quality >= 50) return
     this.items[i].quality = this.items[i].quality + 1;
+  }
+
+  #handeBackstagePass(i) {
+    if (this.items[i].sellIn < 11) {
+      this.#increaseQuality(i);
+    }
+    if (this.items[i].sellIn < 6) {
+      this.#increaseQuality(i);
+    }
+  }
+
+  #handleQualityChange(i) {
+    if (this.items[i].name == "Aged Brie" || this.items[i].name == "Backstage passes to a TAFKAL80ETC concert") {
+      this.#increaseQuality(i);
+      if (this.items[i].name == "Backstage passes to a TAFKAL80ETC concert") {
+        this.#handeBackstagePass(i)
+      }
+    } else {
+      this.#decreaseQuality(i)
+    }
   }
 
   #handleExpired(i) {
